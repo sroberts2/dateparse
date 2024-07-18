@@ -86,6 +86,13 @@ class DateUtilTest {
     }
 
     @Test
+    public void testParseYearsSnapped() {
+        Date testDate = DateUtil.parse("2024-07-15T12:34:56Z@y");
+        assertEquals(Date.from(Instant.parse("2024-01-01T00:00:00Z")), testDate,
+                "The parsed date should match the expected date.");
+    }
+
+    @Test
     public void testParseMultipleAdds() {
         Date testDate = DateUtil.parse("2024-07-15T12:34:56Z+10s+10m+10h+10d+10mon");
         assertEquals(Date.from(Instant.parse("2025-05-25T22:45:06Z")), testDate,
