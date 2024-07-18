@@ -14,7 +14,7 @@ This application contains a single static Class called `DateUtil` this class hol
 + Zero or more operations which can contain:
     - A prefix with either `+` = add time, `-` minus time or `@` to snap to the nearest specified unit.
     - A value in the form of an Integer
-    - One of the following for a time digit `s` = second, `m` = minute, `h` = hour, `d` = day, `mon` = month
+    - One of the following for a time digit `s` = second, `m` = minute, `h` = hour, `d` = day, `mon` = month, `y` = year
 
 Example calls are:
 + `DateUtil.parse("2024-07-15T12:00:00Z-10m");`

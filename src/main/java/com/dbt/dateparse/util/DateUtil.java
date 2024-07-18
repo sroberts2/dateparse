@@ -28,7 +28,7 @@ public class DateUtil {
      * <li>`-` Subtract offset from the date modifier
      * <li>`@` rounds down to this time unit
      * <li>the amount is an integer
-     * <li>the unit is one of either s = second, m = minute, h = hour, d = day, mon = month
+     * <li>the unit is one of either s = second, m = minute, h = hour, d = day, mon = month, y = year
      * </ul><p>
      *
      * @param date the input date string to parse
@@ -120,6 +120,9 @@ public class DateUtil {
             case "mon":
                 localDateTime = localDateTime.plusMonths(Integer.valueOf(amount));
                 break;
+            case "y":
+                localDateTime = localDateTime.plusYears(Integer.valueOf(amount));
+                break;
         }
         Date newDate = Date.from(localDateTime.atZone(ZoneOffset.UTC).toInstant());
         return newDate;
@@ -151,6 +154,9 @@ public class DateUtil {
             case "mon":
                 localDateTime = localDateTime.minusMonths(Integer.valueOf(amount));
                 break;
+            case "y":
+                localDateTime = localDateTime.minusYears(Integer.valueOf(amount));
+                break;
         }
         Date newDate = Date.from(localDateTime.atZone(ZoneOffset.UTC).toInstant());
         return newDate;
@@ -180,6 +186,10 @@ public class DateUtil {
                 break;
             case "mon":
                 localDateTime = localDateTime.with(TemporalAdjusters.firstDayOfMonth())
+                        .truncatedTo(ChronoUnit.DAYS);
+                break;
+            case "y":
+                localDateTime = localDateTime.with(TemporalAdjusters.firstDayOfYear())
                         .truncatedTo(ChronoUnit.DAYS);
                 break;
         }
